@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.game-container {
+    text-align: center;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.status {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: #444;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin: 1rem auto;
+}
+
+.cell {
+    width: 100%;
+    aspect-ratio: 1;
+    background-color: #fff;
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cell:hover {
+    background-color: #f0f0f0;
+}
+
+.cell.x {
+    color: #ff4757;
+}
+
+.cell.o {
+    color: #2ed573;
+}
+
+.reset-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.reset-btn:hover {
+    background-color: #555;
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 1rem;
+    }
+    
+    .cell {
+        font-size: 2rem;
+    }
+}
+/* Winning cell style */
+.winning-cell {
+    background-color: #ffeaa7;
+    box-shadow: 0 0 15px gold;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* Confetti animation */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+    animation: confetti-fall 3s ease-in-out forwards;
+    z-index: 100;
+}
+
+@keyframes confetti-fall {
+    0% {
+        opacity: 1;
+        transform: translateY(-100vh) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Status message emoji */
+.status {
+    font-size: 1.3rem;
+    min-height: 2rem;
+}
+
+:root {
+    --primary-color: #6a11cb;  /* Vibrant purple */
+    --secondary-color: #2575fc; /* Bright blue */
+    --x-color: #ff3e4d;        /* Vibrant red for X */
+    --o-color: #00d2ff;        /* Bright cyan for O */
+    --background-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    --cell-bg: rgba(255, 255, 255, 0.9);
+    --text-color: #fff;
+    --status-bg: rgba(0, 0, 0, 0.7);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--background-gradient);
+    background-attachment: fixed;
+    color: var(--text-color);
+    font-family: 'Permanent Marker', cursive, sans-serif;
+}
+
+.game-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+    color: white;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-size: 2.5rem;
+}
+
+.status {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    padding: 0.8rem;
+    background: var(--status-bg);
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 12px;
+    margin: 1.5rem auto;
+}
+
+.cell {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--cell-bg);
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cell:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cell.x {
+    color: var(--x-color);
+    text-shadow: 0 2px 4px rgba(255, 62, 77, 0.4);
+}
+
+.cell.o {
+    color: var(--o-color);
+    text-shadow: 0 2px 4px rgba(0, 210, 255, 0.4);
+}
+
+.reset-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    margin-top: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reset-btn:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Winning cell styles */
+.winning-cell {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.05); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+    .cell {
+        font-size: 2.5rem;
+    }
+}
